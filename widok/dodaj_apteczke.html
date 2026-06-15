@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apteczka logowanie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"> <!-- Połączenie z Bootsrap -->
+</head>
+<body>
+    <nav class="menu_ekran_glowny">
+        <a href='../ekran_glowny.php'>Ekran Główny</a>
+        <a href='nowa_apteczka.html'>Stwórz nową apteczkę</a>
+        <a href='dodaj_apteczke.html'class="active">Dodaj apteczkę do konta</a>
+        <a href='../wyswietl_moje_apteczki.php'>Moje apteczki</a>
+        <a href="../wyloguj.php" class="wylogowanie">Wyloguj</a>
+    </nav>
+    <form action="../dodaj_apteczke_do_usera.php" method="POST">
+        <div class="form-icon">
+            <i class="bi bi-bag-heart-fill"></i>
+        </div>
+        <h5>Dodaj istniejącą apteczkę do konta</h5>
+        <h6>Aby dodać apteczkę poproś inego użytkownika o nazwę i hasło do apteczki</h6>
+       <input type="text" name="nazwa_apteczki" placeholder=" Nazwa apteczki" required><br>
+        <input type="password" name="haslo_apteczki" placeholder="Hasło do apteczki" required><br>
+        <input type="submit" value="Dodaj do konta">
+    </form>
+</body>
+</html>

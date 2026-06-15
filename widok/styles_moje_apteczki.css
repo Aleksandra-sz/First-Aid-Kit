@@ -1,0 +1,363 @@
+/* -------------------------------------------------
+   0. Zmienne kolorów (jak w poprzednich plikach)
+--------------------------------------------------*/
+:root {
+  /* Kolorki <3 */
+  --green-dark: #132A13;
+  --green: #31572C;
+  --green-light: #4F772D;
+  --green-soft: #90A955;
+  --yellow-light: #ECF39E;
+  --black: #1B1B1B;
+  --white: #ffffff;
+  --olive-light: #B7BC8E;
+  --olive-dark: #7f8366;
+  --light-gray: #D9D9D9;
+}
+
+/* -------------------------------------------------
+   1. Tło strony – prawie białe, z subtelną zielenią
+--------------------------------------------------*/
+body {
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding-top: 100px;          /* przestrzeń na menu */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: var(--green-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* -------------------------------------------------
+   2. Górne menu
+--------------------------------------------------*/
+
+/* Menu ekran główny */
+.menu_ekran_glowny {
+  position: absolute;
+  top: 30px;
+  left: 100px;
+  display: flex;
+  gap: 50px; /* odstępy między "zakładkami" */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menu_ekran_glowny a {
+  color: var(--olive-light); 
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.menu_ekran_glowny a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--olive-dark);
+  transition: width 0.3s ease;
+}
+
+.menu_ekran_glowny a:hover::after {
+  width: 100%;
+}
+
+/* Stylizacja otwartego linku- podkreślenie */
+.menu_ekran_glowny a.active { 
+  padding-bottom: 2px;
+  color: var(--olive-dark);
+}
+
+/* Stylizacja przycisku wuloguj */
+.menu_ekran_glowny a.wylogowanie {
+  margin-left: 10px; 
+}
+
+.menu_ekran_glowny a.wylogowanie:hover {
+  margin-left: 10px;
+  background-color: rgba(79, 119, 45, 0.2);
+  border-radius: 4px;
+  color: var(--olive-dark);
+  transition: padding 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* -------------------------------------------------
+   3. Nagłówek "Apteczka: ..."
+--------------------------------------------------*/
+h5 {
+  margin: 30px auto 20px auto;
+  font-size: 28px;
+  color: var(--green);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* -------------------------------------------------
+   4. Formularz dodawania leku
+--------------------------------------------------*/
+form {
+  background: linear-gradient(
+    to top right,
+    rgba(240, 255, 240, 0.7),
+    rgba(255, 255, 255, 0.85)
+  );
+  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  width: 90%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+form label {
+  font-weight: 600;
+  color: var(--green);
+}
+
+form input,
+form select {
+  width: 100%;
+  max-width: 260px;
+  padding: 10px 12px;
+  margin: 8px 0 16px 0;
+  border: none;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  color: var(--olive-dark);
+  transition: box-shadow 0.25s, background-color 0.25s;
+}
+
+form input:focus,
+form select:focus {
+  outline: none !important;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px var(--olive-light);
+}
+
+input[type="submit"] {
+  outline: none !important;
+  cursor: pointer;
+  max-width: 200px;
+  background: var(--olive-light);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.25s ease;
+}
+
+input[type="submit"]:hover {
+    outline: none !important;
+  background: var(--olive-dark);
+}
+
+/* -------------------------------------------------
+   5. Sekcje <h3> – tytuły
+--------------------------------------------------*/
+h3 {
+  margin: 20px 0 14px 0;
+  font-size: 24px;
+  color: var(--green);
+  text-align: center;
+}
+
+/* -------------------------------------------------
+   6. Lista leków w apteczce
+--------------------------------------------------*/
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 60px auto;
+  max-width: 700px;
+  width: 90%;
+}
+
+ul li {
+  background: rgba(150, 194, 150, 0.25);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--green-dark);
+}
+
+ul li strong {
+  margin-right: 6px;
+}
+
+/* czerwone podświetlenie leków przeterminowanych (PHP nadaje inline color:red) */
+ul li[style*="color:red"] {
+  background: rgba(235, 88, 88, 0.15);
+}
+
+ul li[style*="color:red"] strong {
+  color: #b00000;
+}
+
+/* przyciski "Zażyj 1" / "Utylizuj" */
+ul li input[type="submit"],
+div input[type="submit"] {       /* także box z ostrzeżeniem */
+  background: var(--green-soft);
+  outline:none !important;
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+ul li input[type="submit"]:hover,
+div input[type="submit"]:hover {
+  background: var(--green-light);
+}
+
+
+/* -------------------------------------------------
+   7. Box ostrzegawczy o przeterminowanych lekach
+--------------------------------------------------*/
+div[style*="border: 2px solid red"] {
+  background: rgba(255, 230, 230, 0.85);
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
+  max-width: 700px;
+  width: 90%;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+div[style*="border: 2px solid red"] ul {
+  margin-top: 10px;
+}
+
+div[style*="border: 2px solid red"] li {
+  margin-bottom: 6px;
+}
+
+/* -------------------------------------------------
+   8. Komunikaty sukcesu / błędu (echo w PHP)
+--------------------------------------------------*/
+p[style*="color:green"] {
+  background: rgba(220, 255, 220, 0.85);
+  padding: 10px 16px;
+  border-radius: 8px;
+  max-width: 340px;
+  margin: 12px auto;
+  font-weight: 600;
+  text-align: center;
+  color: var(--green-dark);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+p[style*="color:red"] {
+  background: rgba(255, 230, 230, 0.9);
+  padding: 10px 16px;
+  border-radius: 8px;
+  max-width: 480px;
+  margin: 12px auto;
+  font-weight: 600;
+  text-align: center;
+  color: #b00000;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.1);
+}
+
+li form {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* To w historii ruchów */
+table {
+    width: 70%;
+    margin: 20px auto;
+    border-collapse: collapse; 
+    background-color: #ffffffdd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Styl dla nagłówków th i komórek td*/
+table th, table td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table th {
+    background-color: var(--olive-light);
+    color: var(--green-dark);
+    font-weight: bold;
+    font-size: 16px;
+}
+/* co drugi parzysty wiersz */
+table tr:nth-child(even) {
+    background-color: #e4f3cd;
+}
+
+table tr:hover {
+    background-color: #c4d5ab;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 24px;
+    color: #2e5f4d;
+}
+
+/* Stylizacja linku */
+a.link {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: var(--green-soft);   /* ładny kolor tła */
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+a.link:hover {
+  background-color: var(--olive-dark);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+/* Usunięcie outline
+ */
+input[type="submit"],
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:active {
+    outline: none !important;
+    box-shadow: none !important;
+}

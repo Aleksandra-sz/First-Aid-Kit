@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"> <!-- Połączenie z Bootsrap -->
+    <title>Stwórz Apteczkę</title>
+</head>
+<body>
+     <nav class="menu_ekran_glowny">
+        <a href='../ekran_glowny.php'>Ekran Główny</a>
+        <a href='nowa_apteczka.html'class="active">Stwórz nową apteczkę</a>
+        <a href='dodaj_apteczke.html'>Dodaj apteczkę do konta</a>
+        <a href='../wyswietl_moje_apteczki.php'>Moje apteczki</a>
+        <a href="../wyloguj.php" class="wylogowanie">Wyloguj</a>
+    </nav>
+     <form action="../stworz_nowa_apteczke.php" method="POST"> 
+        <div class="form-icon">
+            <i class="bi bi-bag-plus-fill"></i>
+        </div>
+        <input type="text" name="nazwa_apteczki" placeholder="Nazwa apteczki" required><br>
+        <input type="password" name="haslo_apteczki" placeholder="Hasło do apteczki" required><br>        
+        <br>
+        <textarea name="opis_apteczki" rows="4" cols="40" placeholder="Opis (opcjonalny)"></textarea><br><br>
+        <input type="submit" value="Stwórz apteczkę">
+    </form>
+</body>
+</html>
